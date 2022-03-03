@@ -547,9 +547,9 @@
 					% 'Chapter A Appendix ...', thanks to @farbverlust (issue #47)
 					{\color{WarmGreyDark}\textbf{\@chapapp\ \thechapter\;}}%
 					%\hspace{.25cm}%
-					\protect\begin{minipage}[t]{.84\linewidth}%
+					\begin{minipage}[t]{.84\linewidth}%
 						#1%
-					\protect\end{minipage}%
+					\end{minipage}%
 				\fi
 				}{}%
 			}
@@ -559,12 +559,12 @@
 				\markright{%
 				\ifnum\c@secnumdepth>\@ne
 						\fontfootertext
-						\protect\raggedleft%
+						\raggedleft%
 						{\color{ctcolorfootermark}\textbf{\thesection}}%
 					\hspace{.25cm}%
-					\protect\begin{minipage}[t]{\minof{\widthof{#1}}{.7\textwidth}}%
+					\begin{minipage}[t]{\minof{\widthof{#1}}{.7\textwidth}}%
 						#1%
-					\protect\end{minipage}%			
+					\end{minipage}%			
 				\fi
 				}%  
 			}
@@ -727,7 +727,7 @@
 					\fi
 					\ifrep@hsrm@backgroundlogo
 						\begin{tikzpicture}[remember picture,overlay,every node/.style={inner sep=0,outer sep=0}]
-							\node (back names) [shape=rectangle, minimum height=50mm, minimum width=0.5\paperwidth, anchor=south east] at (current page.south east) {\includegraphics[width=0.5\paperwidth]{asset/logo/background}};
+							\node (back names) [shape=rectangle, minimum height=50mm, minimum width=0.5\paperwidth, anchor=south east] at (current page.south east) {\includegraphics[width=0.5\paperwidth]{./asset/logo/background.pdf}};
 						\end{tikzpicture}
 					\fi
 					\centering
@@ -738,7 +738,7 @@
 					
 					% Das Logo mit Namen wird eingefügt
 					% \includegraphics[width=6cm]{asset/logo/logo_hsrm} \\[-1mm]
-					\text{Fachbereich Ingenieurwissenschaften} \\
+					\text{Fachbereich \fachbereich} \\
 					% Die Folgende angaben sind aus den Variablen in der main.tex zu entnehmen
 					\text{Studiengang \studiengang} \\
 					\text{Studienrichtung \studienrichtung} \\ [35mm]
