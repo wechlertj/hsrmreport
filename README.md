@@ -1,16 +1,18 @@
 # hsrmreport
 ## Optionen 
-bibfile             > string    > default bib-refs
-lua                 > boolean   > default false         > true
-luafont             > boolean   > default true          > false
-thesis              > boolean   > default true          > false
-section             > boolean   > default false         > true
-banner              > boolean   > default true          > false
-backgroundlogo      > boolean   > default true          > false
-coloredheadline     > boolean   > default false         > true
-listingsforcontent  > boolean   > default false         > true
-toc                 > boolean   > default true          > true
-lof                 > boolean   > default false         > true
-lot                 > boolean   > default false         > true
-lol                 > boolean   > default false         > true
-printbibliography   > boolean   > default false         > ture 
+|Optionsschlüssel    |Optionstype|Standardwert    |Wenn gesetzt wird   |Beschreibung|
+|---                 |---        |---      |---     |---|
+|bibfile             | string    | bib-refs|        |   
+|lua                 | boolean   | false   | true   |
+|luafont             | boolean   | true    | false  |
+|thesis              | boolean   | true    | false  |
+|section             | boolean   | false   | true   |
+|banner              | boolean   | true    | false  |
+|backgroundlogo      | boolean   | true    | false  |
+|coloredheadline     | boolean   | false   | true   |
+|listingsforcontent  | boolean   | false   | true   |
+|toc                 | boolean   | true    | true   |
+|lof                 | boolean   | false   | true   |
+|lot                 | boolean   | false   | true   |
+|lol                 | boolean   | false   | true   |
+|printbibliography   | boolean   | false   | ture   |
