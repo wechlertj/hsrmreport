@@ -11,9 +11,9 @@ Wie ihr damit arbeiten könnt und welche Funktionen die Klasse hat werde ich in 
 *Hinweis: Bei der folgenden Anleitung setze ich ein Grundverständnis für LaTeX voraus.*
 
 ## Inhalt
-- [[#How to use]]
-- [[#Optionen]]
-- [[#Packete]]
+- [#How to use]
+- [#Optionen]
+- [#Packete]
 
 ## How to use
 Sobald ihr euch die Dokumentenklasse als zip-Datei herruntergeladen habt (über den grünen Buttonen "Code"), könnt ihr den Ordner `hsrmreport` kopieren.
