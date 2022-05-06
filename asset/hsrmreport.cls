@@ -1,11 +1,11 @@
 \NeedsTeXFormat{LaTeX2e}
 \LoadClass[%
-	  paper=A4,               	% paper size --> A4 is default in Germany
-	  %twoside,           		% onesite or twoside printing
+	  paper=A4,               	% Dokumentengröße
+	  %twoside,           		% Einseitig oder Zweiseitig (oneside/twoside)
 	  openright,                % doublepage cleaning ends up right side
 	  parskip=half,           	% spacing value / method for paragraphs
 	  %chapterprefix=true,     	% prefix for chapter marks
-	  12pt,                   	% font size
+	  12pt,                   	% Schriftgröße
 	  headings=normal,        	% size of headings
 	  bibliography=totoc,     	% include bib in toc
 	  listof=totoc,           	% include listof entries in toc
@@ -22,7 +22,7 @@
 	% **************************************************
 	% Packages (https://www.namsu.de/Extra/latex-pakete.html)
 	% **************************************************
-		\RequirePackage{xpatch}
+		\RequirePackage{xpatch}					%
 		\RequirePackage{xkeyval}				%
 		\RequirePackage{xifthen}				% Für die Möglichkeit If-Abfragen zu erstellen (http://ctan.ebinger.cc/tex-archive/macros/latex/contrib/xifthen/xifthen.pdf)
 		\RequirePackage{kvoptions} 				% http://www.tug.org/tugboat/tb30-1/tb94wright-keyval.pdf
