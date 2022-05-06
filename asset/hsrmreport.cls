@@ -70,9 +70,15 @@
 			\define@boolkey[rep]{hsrm}{lua}[true]{}
 			\setkeys[rep]{hsrm}{lua=false}
 
+			% --> Werte = true|false
+			\define@boolkey[rep]{hsrm}{svg}[true]{}
+			\setkeys[rep]{hsrm}{svg=false}
+
 			\define@boolkey[rep]{hsrm}{luafont}[true]{}
 			\setkeys[rep]{hsrm}{luafont=false}
 
+			\define@boolkey[rep]{hsrm}{emoji}[true]{}
+			\setkeys[rep]{hsrm}{emoji=false}
 			% OPTION thesis
 			% --> Werte = true|false
 			\define@boolkey[rep]{hsrm}{thesis}[true]{}
@@ -105,7 +111,7 @@
 	
 			% OPTION tableofcontent
 			% --> Werte = true|false
-			\define@boolkey[rep]{hsrm}{toc}[true]{}
+			\define@boolkey[rep]{hsrm}{toc}[false]{}
 			\setkeys[rep]{hsrm}{toc=true}
 	
 			% OPTION listoffigures
@@ -145,6 +151,8 @@
 			
 			% Prüft ob das Hochschul Logo vorhanden ist
 			\IfFileExists{asset/logo/banner.svg}{}{\PackageError{hsrm}{Es war mir nicht die Datei "banner.svg" im Ordner "asset/logo" zu finden! Bitte stell sicher, dass der Ordner "asset/logo" im aktuellen Projekt zu finden ist. Du kannst aus einem älternen Projekt diese Datei oder auch Ordner kopieren.}{Falls denoch Probleme auftauchen melde dich bei: timjonas.wechler@student.hs-rm.de}}
+			% Prüft ob das Hochschul Logo vorhanden ist
+			\IfFileExists{asset/logo/banner.png}{}{\PackageError{hsrm}{Es war mir nicht die Datei "banner.svg" im Ordner "asset/logo" zu finden! Bitte stell sicher, dass der Ordner "asset/logo" im aktuellen Projekt zu finden ist. Du kannst aus einem älternen Projekt diese Datei oder auch Ordner kopieren.}{Falls denoch Probleme auftauchen melde dich bei: timjonas.wechler@student.hs-rm.de}}
 
 			% Prüft ob Hintergrund vorhanden ist 
 			\IfFileExists{asset/logo/background.pdf}{}{\PackageError{hsrm}{Es war mir nicht die Datei "background.pdf" im Ordner "asset/logo" zu finden! Bitte stell sicher, dass der Ordner "asset/logo" im aktuellen Projekt zu finden ist. Du kannst aus einem älternen Projekt diese Datei oder auch Ordner kopieren.}{Falls denoch Probleme auftauchen melde dich bei: timjonas.wechler@student.hs-rm.de}}
@@ -220,6 +228,7 @@
 			\ifrep@hsrm@luafont
 				\RequirePackage[italic]{mathastext}
 			\fi
+
 			\RequirePackage{amsmath} 					% abgesetzte Formeln zentriert in der Zeile
 			\RequirePackage{amssymb} 					
 			\RequirePackage{amsfonts}
@@ -227,14 +236,17 @@
 		% **********************************************
 		% Schriftart für Fließtext
 		% **********************************************
-			
+		
 			\ifrep@hsrm@lua
 				%  ---  fontspec wird benötigt um freie Wahl bei der Schriftart zu haben und wird von LuaLaTeX benötigt.
 				\RequirePackage{fontspec}
+				
 			\else
 				\RequirePackage[utf8]{inputenc}
 				\RequirePackage{lmodern}
+				\RequirePackage[T1]{fontenc}
 			\fi
+			
 			\ifrep@hsrm@luafont
 				% ------------------------------------------
 				% Setzen der gewünschten Schriftarten
@@ -290,6 +302,8 @@
 			strict=true,							% 	- warning are errors now
 			style=german							% 	- german quotes
 		]{csquotes}
+		% \RequirePackage{emoji}
+		% \setemojifont{Twemoji Mozilla}
 		%
 		% ---------------------------
 		% Textformatierung
@@ -720,10 +734,17 @@
 				% Erstellt in der Übersicht der PDF-Datei den Eintrag "Titelseite"
 				\pdfbookmark[0]{Titleseite}{Titleseite}
 				{
+					\ifrep@hsrm@lua\else\sffamily\fi
 					\ifrep@hsrm@banner
-						\begin{tikzpicture}[remember picture,overlay,every node/.style={inner sep=0,outer sep=0}]
-							\node (back names) [shape=rectangle, minimum height=50mm, minimum width=\paperwidth, anchor=north west] at (current page.north west) {\includesvg[width=\paperwidth]{asset/logo/banner.svg}};
-						\end{tikzpicture}
+						\ifrep@hsrm@svg
+							\begin{tikzpicture}[remember picture,overlay,every node/.style={inner sep=0,outer sep=0}]
+								\node (back names) [shape=rectangle, minimum height=50mm, minimum width=\paperwidth, anchor=north west] at (current page.north west) {\includesvg[width=\paperwidth]{asset/logo/banner.svg}};
+							\end{tikzpicture}
+						\else
+							\begin{tikzpicture}[remember picture,overlay,every node/.style={inner sep=0,outer sep=0}]
+								\node (back names) [shape=rectangle, minimum height=50mm, minimum width=\paperwidth, anchor=north west] at (current page.north west) {\includegraphics[width=\paperwidth]{asset/logo/banner.png}};
+							\end{tikzpicture}
+						\fi
 					\fi
 					\ifrep@hsrm@backgroundlogo
 						\begin{tikzpicture}[remember picture,overlay,every node/.style={inner sep=0,outer sep=0}]
@@ -743,9 +764,9 @@
 					\text{Studiengang \studiengang} \\
 					\text{Studienrichtung \studienrichtung} \\ [35mm]
 
-					{\large \dokumentenart} \\[5mm]
-					{\LARGE \textbf{\titel}}\par\smallskip
-					{\large \textbf{\kurs}}\par\medskip
+					\text{\large \dokumentenart} \\[5mm]
+					\text{\LARGE \textbf{\titel}}\par\smallskip
+					\text{\large \textbf{\kurs}}\par\medskip
 					\ifrep@hsrm@thesis\else
 						{Versuchsdurchführung: \versuchsdurchfuehrungDatum}
 					\fi
