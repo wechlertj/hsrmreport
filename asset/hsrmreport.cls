@@ -439,6 +439,10 @@
 			captionskip=3pt
 		]{subfig}
 		\RequirePackage{svg}
+		\ifrep@hsrm@lua
+			\RequirePackage{emoji}
+			\setemojifont{Twemoji Mozilla}
+		\fi
 	%
 	% **************************************************
 	% Tabellen
